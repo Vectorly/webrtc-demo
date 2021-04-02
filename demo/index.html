@@ -27,14 +27,8 @@
     <link href="//fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/parent.css"/>
     <link rel="stylesheet" href="css/main.css"/>
-    <script src="https://cdn.vectorly.io/upscaler/1.0.0/vectorly-upscaler.js" type="application/javascript"></script>
+    <script src="https://cdn.vectorly.io/upscaler/v2/latest/vectorly-upscaler.js" type="application/javascript"></script>
 
-
-    <style>
-        canvas{
-            width: auto;
-        }
-    </style>
 
 </head>
 
@@ -83,7 +77,10 @@
         </select>
 
         <label>Upscaled</label>
-        <input id="upscale" type="checkbox" checked onclick="toggle()"  />
+        <label class="switch">
+          <input id="upscale" type="checkbox" checked />
+          <span class="slider round"><span>
+        </label>
     </div>
 
 

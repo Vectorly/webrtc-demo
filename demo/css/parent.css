@@ -69,8 +69,6 @@ button[disabled]:hover {
 
 canvas {
   background-color: #ccc;
-  max-width: 100%;
-  width: 100%;
 }
 
 code {
