@@ -104,6 +104,12 @@ function onCreateSessionDescriptionError(error) {
   console.log('Failed to create session description: ' + error.toString());
 }
 
+function getUrlParams(prop) {
+  window.searchParams = window.searchParams || (new URLSearchParams(window.location.search));
+  return window.searchParams.get(prop)
+}
+
+
 function call() {
   callButton.disabled = true;
   bandwidthSelector.disabled = false;
@@ -120,7 +126,9 @@ function call() {
 
     const rtpTransceiver = pc1.addTransceiver("video");
 
-    rtpTransceiver.setCodecPreferences(codecPreferences);
+    if (rtpTransceiver.setCodecPreferences) {
+      rtpTransceiver.setCodecPreferences(codecPreferences);
+    }
 
 
   console.log('Created local peer connection object pc1');
@@ -136,8 +144,13 @@ function call() {
       .then(gotStream)
       .catch(e => console.warn('getUserMedia() error: ' + e.name));
 
-
-  upscaler  = new vectorlyUpscaler(remoteVideo, {width: width*3, height: height*3, name: 'residual_3k', version: '2.1'});
+  upscaler = new vectorlyUpscaler(remoteVideo,
+                                  {
+                                    token: getUrlParams('token') || '',
+                                    serverType: 'staging',
+                                    // networkParams: {name: 'residual_3k', version: '2.1', tag: 'general'}
+                                    networkParams: {name: 'residual_4k_2x', version: '0', tag: 'screenshare'}
+                                  });
 
 
 }
