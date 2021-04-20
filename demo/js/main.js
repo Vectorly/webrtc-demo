@@ -149,9 +149,8 @@ function call() {
                                     token: getUrlParams('token') || '0b5707c6-6642-4cc8-8570-b29af9e51345',
                                     // serverType: 'staging',
                                     // networkParams: {name: 'residual_3k', version: '2.1', tag: 'general'}
-                                    networkParams: {name: 'residual_4k_2x', version: '0', tag: 'screenshare'}
+                                    networkParams: {name: 'residual_4k_2x', version: '0'}
                                   });
-
 
 }
 
